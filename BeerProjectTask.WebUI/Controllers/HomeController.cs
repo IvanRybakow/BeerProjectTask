@@ -17,6 +17,12 @@ namespace BeerProjectTask.WebUI.Controllers
             return await Task.Factory.StartNew(() => View());
         }
 
+        public async Task<IActionResult> Details(BeerSortFilterOptions options)
+        {
+            ViewBag.Options = options;
+            return await Task.Factory.StartNew(() => View());
+        }
+
         public IActionResult Privacy()
         {
             return View();

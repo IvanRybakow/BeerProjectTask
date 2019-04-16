@@ -1,0 +1,9 @@
+﻿@using BeerProjectTask.WebUI.DAL
+@using BeerProjectTask.WebUI.Components
+@{
+    ViewData["Title"] = "BeerDetails";
+}
+
+<div class="container-fluid">
+    @await Component.InvokeAsync(typeof(BeerDetails), new { options = (BeerSortFilterOptions)ViewBag.Options })
+</div>
