@@ -31,8 +31,8 @@ namespace BeerProjectTask.WebUI
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-            services.AddTransient<IBeerRepository, BeerApiRepository>();
-            services.AddTransient<IStyleRepository, StyleApiRepository>();
+            services.AddScoped<IBeerRepository, BeerApiRepository>();
+            services.AddScoped<IStyleRepository, StyleApiRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
