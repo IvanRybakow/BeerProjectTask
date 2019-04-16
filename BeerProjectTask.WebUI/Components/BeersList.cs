@@ -18,6 +18,7 @@ namespace BeerProjectTask.WebUI.Components
         {
             var data = await beerRepository.GetBeersAsync(options);
             ViewBag.Options = options;
+            if (data.Data == null) return View("NoResults");
             return View(data);
         }
     }

@@ -7,7 +7,7 @@
             <img class="card-img-top" src="@(item.Labels?.Medium ?? "https://imgplaceholder.com/420x420/ce8282/9a7171/glyphicon-bold")" alt="@item.Name" />
             <div class="card-body text-secondary">
                 <h5 class="card-title">@item.Name</h5>
-                <p class="card-text" style="overflow:hidden; height: 6rem;">@(item.Description ?? "No description")</p>
+                <p class="card-text" style="overflow:hidden; height: 6rem;">@(item.Description ?? item?.Style?.Description ?? "No description")</p>
                 @Html.RouteLink("More details...", new { controller = "Home", action = "Details", id = item.Id }, new { @class = "btn btn-secondary" })
             </div>
         </div>
@@ -21,13 +21,16 @@
     var nextOptions = options.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
     nextOptions["p"] = (Model.CurrentPage + 1).ToString();
 }
-<nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center pagination-lg">
-        <li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
-            <a class="page-link" asp-controller="Home" asp-action="Index" asp-all-route-data="prevOptions">Previous</a>
-        </li>
-        <li class="page-item @(Model.CurrentPage == Model.NumberOfPages ? "disabled" : "")">
-            <a class="page-link" asp-controller="Home" asp-action="Index" asp-all-route-data="nextOptions">Next</a>
-        </li>
-    </ul>
-</nav>
+@if (Model.NumberOfPages > 1)
+{
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center pagination-lg">
+            <li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
+                <a class="page-link" asp-controller="Home" asp-action="Index" asp-all-route-data="prevOptions">Previous</a>
+            </li>
+            <li class="page-item @(Model.CurrentPage == Model.NumberOfPages ? "disabled" : "")">
+                <a class="page-link" asp-controller="Home" asp-action="Index" asp-all-route-data="nextOptions">Next</a>
+            </li>
+        </ul>
+    </nav>
+}

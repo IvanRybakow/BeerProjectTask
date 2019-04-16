@@ -1,3 +1,9 @@
 ﻿@model BeerProjectTask.WebUI.Models.Beer
 
-<h1>@Model.Description</h1>
+<div class="card p-5">
+    <img class="card-img-top align-self-center" style="max-width: 20rem" src="@(Model.Labels?.Large ?? "https://imgplaceholder.com/420x420/ce8282/9a7171/glyphicon-bold")" alt="@Model.Name" />
+    <div class="card-body text-secondary">
+        <h5 class="card-title text-center">@Model.Name</h5>
+        <p class="card-text">@(Model.Description ?? Model?.Style?.Description ?? "No description")</p>
+    </div>
+</div>

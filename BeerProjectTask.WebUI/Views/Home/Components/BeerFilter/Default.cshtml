@@ -1,4 +1,47 @@
-﻿<form method="get" data-ajax="true" data-ajax-method="get" data-ajax-update="BeerList" data-ajax-url="@Url.Link("Index")">
-    Name: <input type="text" name="name" /><br>
-    <input type="submit" />
-</form>
+﻿@model IEnumerable<Style>
+
+<div class="card p-3 my-3">
+    <form method="get" data-ajax="true" data-ajax-method="get" data-ajax-update="#BeerList" data-ajax-url=@Url.RouteUrl(new { controller = "Home", action = "FilteredResults" })>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="SelectStyle">Style:</label>
+                <select class="form-control" name="StyleId" id="SelectStyle">
+                    <option value="">Select Style</option>
+                    @foreach (var item in Model)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="SelectOrder">Sort By:</label>
+                <select class="form-control" name="order" id="SelectOrder">
+                    <option value="name">Name</option>
+                    <option value="abv">Alcohol, %</option>
+                    <option value="ibu">Bitterness</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="Name">Name:</label>
+                <input class="form-control" type="text" name="name" id="Name" /><br>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="SelectIsOrganic">Is Organic:</label>
+                <select class="form-control" name="IsOrganic" id="SelectIsOrganic">
+                    <option value="">All</option>
+                    <option value="Y">Organic</option>
+                    <option value="N">Non Organic</option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="SelectAbv">Alcohol, %:</label>
+                <input class="form-control" type="text" name="Abv" id="SelectAbv" /><br>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Search</button>
+        <button type="reset" class="btn btn-dark">Reset</button>
+    </form>
+</div>

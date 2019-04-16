@@ -13,6 +13,7 @@ namespace BeerProjectTask.WebUI.DAL
         public string Abv { get; set; } = "";
         public string IsOrganic { get; set; } = "";
         public string Order { get; set; } = "";
+        public string StyleId { get; set; } = "";
 
         public string EntityName => "beers";
 
@@ -25,7 +26,7 @@ namespace BeerProjectTask.WebUI.DAL
                 {"abv", Abv },
                 {"isOrganic", IsOrganic },
                 {"order", Order },
-                {"hasLabels", "Y" }
+                {"styleId", StyleId }
             };
 
         public bool AdditionalDataRequired => true;

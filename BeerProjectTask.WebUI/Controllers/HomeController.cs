@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BeerProjectTask.WebUI.Models;
 using BeerProjectTask.WebUI.DAL;
+using BeerProjectTask.WebUI.Components;
 
 namespace BeerProjectTask.WebUI.Controllers
 {
@@ -15,6 +16,11 @@ namespace BeerProjectTask.WebUI.Controllers
         {
             ViewBag.Options = options;
             return await Task.Factory.StartNew(() => View());
+        }
+
+        public async Task<IActionResult> FilteredResults(BeersListSortFilterOptions options)
+        {
+            return await Task.Factory.StartNew(() => ViewComponent(typeof(BeersList), new { options }));
         }
 
         public async Task<IActionResult> Details(BeerSortFilterOptions options)
