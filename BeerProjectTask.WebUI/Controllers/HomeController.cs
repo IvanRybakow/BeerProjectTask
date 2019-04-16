@@ -5,14 +5,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BeerProjectTask.WebUI.Models;
+using BeerProjectTask.WebUI.DAL;
 
 namespace BeerProjectTask.WebUI.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        public async Task<IActionResult> Index(BeersListSortFilterOptions options)
         {
-            return View();
+            ViewBag.Options = options;
+            return await Task.Factory.StartNew(() => View());
         }
 
         public IActionResult Privacy()
