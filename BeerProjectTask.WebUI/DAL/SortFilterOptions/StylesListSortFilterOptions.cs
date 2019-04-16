@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace BeerProjectTask.WebUI.DAL
 {
-    public class BeerSortFilterOptions : IApiRequestOptions
+    public class StylesListSortFilterOptions : IApiRequestOptions
     {
-        public string EntityName => "beer";
+        public string EntityName => "styles";
 
         public string Id { get; set; }
+
+        public bool AdditionalDataRequired => false;
 
         public IDictionary<string, string> Parameters => new Dictionary<string, string>();
     }

@@ -13,6 +13,7 @@
         </div>
     }
 </div>
+
 @{
     var options = ((BeersListSortFilterOptions)ViewBag.Options).Parameters;
     var prevOptions = options.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);

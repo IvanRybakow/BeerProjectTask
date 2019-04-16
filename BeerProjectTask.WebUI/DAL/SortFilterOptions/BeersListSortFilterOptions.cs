@@ -27,5 +27,7 @@ namespace BeerProjectTask.WebUI.DAL
                 {"order", Order },
                 {"hasLabels", "Y" }
             };
+
+        public bool AdditionalDataRequired => true;
     }
 }

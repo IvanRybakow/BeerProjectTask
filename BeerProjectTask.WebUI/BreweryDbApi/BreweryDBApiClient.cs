@@ -24,7 +24,7 @@ namespace BeerProjectTask.WebUI.BreweryDbApi
         {
             string url = $@"{baseURL}/{options.EntityName}/{options.Id}";
             var request = new RestRequest(url);
-            if (!String.IsNullOrEmpty(options.Id)) request.RootElement = "data";
+            if (!options.AdditionalDataRequired) request.RootElement = "data";
             foreach (var pair in options.Parameters) request.AddParameter(pair.Key, pair.Value, ParameterType.QueryString);
             var response = await client.ExecuteTaskAsync<T>(request);
             if (response.ErrorException != null) throw new Exception("Error retrieving response. Check inner details for more info.");

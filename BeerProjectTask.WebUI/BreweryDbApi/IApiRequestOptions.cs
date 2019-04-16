@@ -9,6 +9,7 @@ namespace BeerProjectTask.WebUI.BreweryDbApi
     {
         string EntityName { get; }
         string Id { get; set; }
+        bool AdditionalDataRequired { get; }
         IDictionary<string, string> Parameters { get; }
     }
 }
