@@ -9,10 +9,10 @@ namespace BeerProjectTask.WebUI.DAL
 {
     public class BeerApiRepository : IBeerRepository
     {
-        private readonly BreweryDBApiClient breweryDBApiClient;
-        public BeerApiRepository()
+        private readonly IApiClient breweryDBApiClient;
+        public BeerApiRepository(IApiClient apiClient)
         {
-            breweryDBApiClient = new BreweryDBApiClient();
+            breweryDBApiClient = apiClient;
         }
 
         public async Task<Beer> GetBeerByIdAsync(BeerSortFilterOptions options)

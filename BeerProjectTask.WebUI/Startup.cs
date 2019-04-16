@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BeerProjectTask.WebUI.BreweryDbApi;
 using BeerProjectTask.WebUI.DAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -33,6 +34,8 @@ namespace BeerProjectTask.WebUI
             });
             services.AddScoped<IBeerRepository, BeerApiRepository>();
             services.AddScoped<IStyleRepository, StyleApiRepository>();
+            services.Configure<ApiSettings>(Configuration.GetSection("ApiSettings"));
+            services.AddScoped<IApiClient, BreweryDBApiClient>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

@@ -9,10 +9,10 @@ namespace BeerProjectTask.WebUI.DAL
 {
     public class StyleApiRepository : IStyleRepository
     {
-        private readonly BreweryDBApiClient breweryDBApiClient;
-        public StyleApiRepository()
+        private readonly IApiClient breweryDBApiClient;
+        public StyleApiRepository(IApiClient apiClient)
         {
-            breweryDBApiClient = new BreweryDBApiClient();
+            breweryDBApiClient = apiClient;
         }
         public async Task<IEnumerable<Style>> GetStylesAsync(StylesListSortFilterOptions options)
         {
