@@ -1,9 +1,56 @@
 ﻿@model BeerProjectTask.WebUI.Models.Beer
 
-<div class="card p-5">
+<div class="card p-3">
     <img class="card-img-top align-self-center" style="max-width: 20rem" src="@(Model.Labels?.Large ?? "https://imgplaceholder.com/420x420/ce8282/9a7171/glyphicon-bold")" alt="@Model.Name" />
     <div class="card-body text-secondary">
-        <h5 class="card-title text-center">@Model.Name</h5>
-        <p class="card-text">@(Model.Description ?? Model?.Style?.Description ?? "No description")</p>
+        <h3 class="card-title text-center mb-3">@Model.Name</h3>
+        <div class="jumbotron mb-3">
+            <h5 class="text-center">Description</h5>
+            <hr class="my-2" />
+            <div class="row">
+                <p class="col-8">@(Model.Description ?? Model.Style?.Description ?? "No description")</p>
+                <div class="col-4 @(Model.Style == null ? "d-none" : "")">
+                    <h6>Style: @(Model?.Style?.ShortName)</h6>
+                    <h6>Category: @(Model?.Style?.Category?.Name)</h6>
+                </div>
+            </div>
+
+        </div>
+        <div class="row justify-content-around mb-3">
+            <div class="card @(Model.Abv == null? "d-none" : "") text-center text-white bg-secondary" style="height: 8rem; width: 10rem">
+                <div class="card-header h4">Alcohol</div>
+                <div class="card-body">
+                    <div class="card-title h4">@Model.Abv %</div>
+                </div>
+            </div>
+            <div class="card @(Model.Ibu == null? "d-none" : "") text-center text-white bg-secondary" style="height: 8rem; width: 10rem">
+                <div class="card-header h4">Bitterness</div>
+                <div class="card-body">
+                    <div class="card-title h4">@Model.Ibu</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="jumbotron mb-3 @(Model.Breweries == null? "d-none" : "")">
+            <h5 class="text-center">Breweries</h5>
+            <hr class="my-3" />
+            <div class="row justify-content-around">
+                @foreach (var item in Model.Breweries)
+                {
+                    <a class="card-link" href="@(item.Website ?? "#") ">
+                        <div class="card border-secondary mb-3 p-1" style="width: 30rem">
+                            <img class="card-img-top" src="@(item.Images?.Medium ?? "https://imgplaceholder.com/420x420/ce8282/9a7171/glyphicon-bold")" alt="@item.Name" />
+                            <div class="card-body text-secondary">
+                                <h5 class="card-title">@item.Name</h5>
+                                <p class="card-text">@(item.Description ?? "No description")</p>
+                            </div>
+                            <div class="card-footer">Established: @(item.Established)</div>
+                        </div>
+                    </a>
+                }
+            </div>
+
+        </div>
+
     </div>
 </div>

@@ -5,12 +5,13 @@ using System.Threading.Tasks;
 
 namespace BeerProjectTask.WebUI.Models
 {
-    public class Style
+    public class Brewery
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string Name { get; set; }
+        public string Established { get; set; }
+        public string Website { get; set; }
+        public Labels Images { get; set; }
         public string Description { get; set; }
-        public string ShortName { get; set; }
-        public Category Category { get; set; }
     }
 }

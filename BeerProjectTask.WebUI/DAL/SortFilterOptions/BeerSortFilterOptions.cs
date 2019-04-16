@@ -12,7 +12,11 @@ namespace BeerProjectTask.WebUI.DAL
 
         public string Id { get; set; }
 
-        public IDictionary<string, string> Parameters => new Dictionary<string, string>();
+        public IDictionary<string, string> Parameters =>
+            new Dictionary<string, string>()
+            {
+                {"withBreweries", "Y" }
+            };
 
         public bool AdditionalDataRequired => false;
     }
