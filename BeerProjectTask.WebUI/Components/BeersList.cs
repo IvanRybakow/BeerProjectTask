@@ -17,7 +17,7 @@ namespace BeerProjectTask.WebUI.Components
         public async Task<IViewComponentResult> InvokeAsync(BeersListSortFilterOptions options)
         {
             var data = await beerRepository.GetBeersAsync(options);
-            ViewBag.Options = options;
+            ViewData["Options"] = options;
             if (data.Data == null) return View("NoResults");
             return View(data);
         }

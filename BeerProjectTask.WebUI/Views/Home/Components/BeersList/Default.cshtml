@@ -15,7 +15,7 @@
 </div>
 
 @{
-    var options = ((BeersListSortFilterOptions)ViewBag.Options).Parameters;
+    var options = ((BeersListSortFilterOptions)ViewData["Options"]).Parameters;
     var prevOptions = options.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
     prevOptions["p"] = (Model.CurrentPage - 1).ToString();
     var nextOptions = options.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);

@@ -7,5 +7,5 @@
     @await Component.InvokeAsync(typeof(BeerFilter))
 </div>
 <div class="container-fluid" id="BeerList">
-    @await Component.InvokeAsync(typeof(BeersList), new { options = (BeersListSortFilterOptions)ViewBag.Options })
+    @await Component.InvokeAsync(typeof(BeersList), new { options = (BeersListSortFilterOptions)ViewData["Options"] })
 </div>

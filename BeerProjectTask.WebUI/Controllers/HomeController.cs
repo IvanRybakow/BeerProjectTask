@@ -14,7 +14,7 @@ namespace BeerProjectTask.WebUI.Controllers
     {
         public async Task<IActionResult> Index(BeersListSortFilterOptions options)
         {
-            ViewBag.Options = options;
+            ViewData["Options"] = options;
             return await Task.Factory.StartNew(() => View());
         }
 
@@ -25,7 +25,7 @@ namespace BeerProjectTask.WebUI.Controllers
 
         public async Task<IActionResult> Details(BeerSortFilterOptions options)
         {
-            ViewBag.Options = options;
+            ViewData["Options"] = options;
             return await Task.Factory.StartNew(() => View());
         }
 
